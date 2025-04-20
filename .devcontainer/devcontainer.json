@@ -1,0 +1,15 @@
+{
+	"image": "elixir:latest", // Use the official Elixir image from Docker Hub
+	"customizations": {
+	  "vscode": {
+		"settings": {
+		  "terminal.integrated.defaultProfile.linux": "bash"
+		},
+		"extensions": [
+		  "jakebecker.elixir-ls" // Elixir Language Server extension for better development experience
+		]
+	  }
+	},
+	"postCreateCommand": "mix local.hex --force && mix local.rebar --force && mix deps.get"
+  }
+  
