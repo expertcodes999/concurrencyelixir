@@ -5,16 +5,11 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-      args:
-        VARIANT: "3-bullseye"
-        NODE_VERSION: "lts/*"
-
     volumes:
-      - ..:/workspace:cached  
-
+      - ..:/workspace:cached
     command: sleep infinity
     network_mode: service:db
-
+    
   db:
     image: postgres:latest
     restart: unless-stopped
