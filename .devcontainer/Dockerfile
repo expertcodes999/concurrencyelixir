@@ -1,10 +1,11 @@
 FROM elixir:latest
 
-# Install build dependencies
+# Install build dependencies and postgresql-client
 RUN apt-get update && apt-get install -y \
     build-essential \
     inotify-tools \
     git \
+    postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Install hex package manager and rebar
