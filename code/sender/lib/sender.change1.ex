@@ -6,7 +6,7 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/sgdpelixir for more book information.
 #---
-defmodule Sender do
+defmodule SenderFireAndForget do
   @moduledoc """
   Documentation for Sender.
   """

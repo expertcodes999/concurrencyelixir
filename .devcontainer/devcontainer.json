@@ -1,15 +1,26 @@
 {
-	"image": "elixir:latest", // Use the official Elixir image from Docker Hub
-	"customizations": {
-	  "vscode": {
-		"settings": {
-		  "terminal.integrated.defaultProfile.linux": "bash"
-		},
-		"extensions": [
-		  "jakebecker.elixir-ls" // Elixir Language Server extension for better development experience
-		]
-	  }
-	},
-	"postCreateCommand": "mix local.hex --force && mix local.rebar --force && mix deps.get"
-  }
+  "name": "Elixir & PostgreSQL",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
   
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "jakebecker.elixir-ls"
+      ]
+    }
+  },
+
+  "forwardPorts": [4000, 5432],
+  
+  "postCreateCommand": "mix local.hex --force && mix local.rebar --force && mix deps.get",
+  
+  // Optional environment variables for PostgreSQL
+  "remoteEnv": {
+    "DATABASE_URL": "postgres://postgres:postgres@db:5432/postgres"
+  }
+}

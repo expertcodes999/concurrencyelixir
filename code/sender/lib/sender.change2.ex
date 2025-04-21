@@ -16,12 +16,18 @@ defmodule Sender do
     IO.puts("Email to #{email} sent")
     {:ok, "email_sent"}
   end
+end
+
+defmodule SenderAwait do
+  @moduledoc """
+  Documentation for SenderAwait.
+  """
 
   def notify_all(emails) do
     emails
     |> Enum.map(fn email ->
       Task.async(fn ->
-        send_email(email)
+        Sender.send_email(email)
       end)
     end)
     |> Enum.map(&Task.await/1)
